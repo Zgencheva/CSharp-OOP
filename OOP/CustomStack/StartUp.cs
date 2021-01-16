@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CustomRandomList
+namespace CustomStack
 {
     public class StartUp
     {
