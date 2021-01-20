@@ -44,7 +44,7 @@ namespace Animals
             } 
              
         }
-        public string Gender
+        public virtual string Gender
         {
             get
             {
@@ -77,7 +77,7 @@ namespace Animals
             StringBuilder sb = new StringBuilder();
             sb.AppendLine(this.GetType().Name);
             sb.AppendLine($"{this.Name} {this.Age} {this.Gender}");
-            sb.AppendLine(this.ProduceSound());
+            sb.Append(this.ProduceSound());
             return sb.ToString().TrimEnd();
         }
     }
