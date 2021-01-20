@@ -9,33 +9,28 @@ namespace PersonsInfo
         static void Main(string[] args)
         {
 
-            var lines = int.Parse(Console.ReadLine());
-            var persons = new List<Person>();
-            for (int i = 0; i < lines; i++)
+            Team team = new Team("SoftUni");
+            int n = int.Parse(Console.ReadLine());
+            List<Person> persons = new List<Person>();
+
+            for (int i = 0; i < n; i++)
             {
-                try
-                {
-                    var cmdArgs = Console.ReadLine().Split();
-                    var person = new Person(cmdArgs[0],
-                                            cmdArgs[1],
-                                            int.Parse(cmdArgs[2]),
-                                            decimal.Parse(cmdArgs[3]));
+                var cmdArgs = Console.ReadLine().Split();
+                var currentPerson = new Person(cmdArgs[0],
+                                        cmdArgs[1],
+                                        int.Parse(cmdArgs[2]),
+                                        decimal.Parse(cmdArgs[3]));
+                persons.Add(currentPerson);
 
-                    persons.Add(person);
-                }
-                catch (ArgumentException ae)
-                {
-
-                    Console.WriteLine(ae.Message); ;
-                }
-                
-
-               
             }
-            var parcentage = decimal.Parse(Console.ReadLine());
-            persons.ForEach(p => p.IncreaseSalary(parcentage));
-            persons.ForEach(p => Console.WriteLine(p.ToString()));
 
+            foreach (Person person in persons)
+            {
+                team.AddPlayer(person);
+            }
+
+            Console.WriteLine($"First team has {team.FirstTeam.Count} players.");
+            Console.WriteLine($"Reserve team has {team.ReserveTeam.Count} players.");
 
         }
     }
