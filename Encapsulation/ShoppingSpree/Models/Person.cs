@@ -2,20 +2,30 @@
 using System.Collections.Generic;
 using System.Text;
 
+using ShoppingSpree.Common;
+
 namespace ShoppingSpree
 {
     public class Person
     {
+        private const string CNT_AFFORD_PRODUCT_MSG = "{0} can't afford {1}";
+        private const string PRODUCT_BOUGHT_MSG = "{0} bought {1}";
+        
         private string name;
         private decimal money;
-        private List<Product> bagOfProducts;
+        private readonly ICollection<Product> bagOfProducts;
 
-
+        //private constructor only for initializing the list
+        private Person()
+        {
+            this.bagOfProducts = new List<Product>();
+        }
         public Person(string name, decimal money)
+            :this()
         {
             this.Name = name;
             this.Money = money;
-            this.bagOfProducts = new List<Product>();
+            
         }
         public string Name 
         { 
@@ -27,7 +37,7 @@ namespace ShoppingSpree
             {
                 if (string.IsNullOrWhiteSpace(value) || string.IsNullOrEmpty(value))
                 {
-                    throw new ArgumentException("Name cannot be empty");
+                    throw new ArgumentException(GlobalConstants.EmptyNameExpMsg);
                 }
                 this.name = value;
             } 
@@ -43,23 +53,33 @@ namespace ShoppingSpree
             {
                 if (value < 0)
                 {
-                    throw new ArgumentException("Money cannot be negative");
+                    throw new ArgumentException(GlobalConstants.NegMoneyExpMsg);
                 }
                 this.money = value;
             }
         }
 
-        public void BuyProduct(Product product)
+        public IReadOnlyCollection<Product> Bag
+        {
+            get 
+            {
+                return (IReadOnlyCollection<Product>)this.bagOfProducts;
+            }
+            
+
+        }
+
+        public string BuyProduct(Product product)
         {
             if (this.Money >= product.Cost)
             {
                 this.Money -= product.Cost;
-                bagOfProducts.Add(product);
-                Console.WriteLine($"{this.Name} bought {product.Name}");
+                this.bagOfProducts.Add(product);
+                return string.Format(PRODUCT_BOUGHT_MSG, this.Name, product.Name);
             }
             else
             {
-                Console.WriteLine($"{this.Name} can't afford {product.Name}");
+                return string.Format(CNT_AFFORD_PRODUCT_MSG, this.Name, product.Name);
             }
         }
 

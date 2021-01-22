@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 
+using ShoppingSpree.Common;
+
 namespace ShoppingSpree
 {
     public class Product
@@ -27,7 +29,7 @@ namespace ShoppingSpree
             {
                 if (string.IsNullOrWhiteSpace(value) || string.IsNullOrEmpty(value))
                 {
-                    throw new ArgumentException("Name cannot be empty");
+                    throw new ArgumentException(GlobalConstants.EmptyNameExpMsg);
                 }
                 this.name = value;
             }
@@ -43,7 +45,7 @@ namespace ShoppingSpree
             {
                 if (value < 0)
                 {
-                    throw new ArgumentException("Cost cannot be negative");
+                    throw new ArgumentException(GlobalConstants.NegMoneyExpMsg);
                 }
                 this.cost = value;
             }
