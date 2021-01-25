@@ -5,11 +5,13 @@ VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonsInfo", "Encapsulation\PersonsInfo.csproj", "{1F173A9F-E457-407D-B986-77B54D0E29C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassBoxData", "ClassBoxData\ClassBoxData.csproj", "{E0FC5195-EDF8-4758-AB48-37094F8D0AC5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassBoxData", "ClassBoxData\ClassBoxData.csproj", "{E0FC5195-EDF8-4758-AB48-37094F8D0AC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimalFarm", "AnimalFarm\AnimalFarm.csproj", "{C10C226E-A870-440F-B9C8-5247E5F6F134}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnimalFarm", "AnimalFarm\AnimalFarm.csproj", "{C10C226E-A870-440F-B9C8-5247E5F6F134}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingSpree", "ShoppingSpree\ShoppingSpree.csproj", "{52E4C1D9-AE9F-42D8-A91A-D78F49C506A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingSpree", "ShoppingSpree\ShoppingSpree.csproj", "{52E4C1D9-AE9F-42D8-A91A-D78F49C506A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaCalories", "PizzaCalories\PizzaCalories.csproj", "{5DFD2FE1-2848-4F92-94E2-D2E938D0EFEC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{52E4C1D9-AE9F-42D8-A91A-D78F49C506A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52E4C1D9-AE9F-42D8-A91A-D78F49C506A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52E4C1D9-AE9F-42D8-A91A-D78F49C506A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DFD2FE1-2848-4F92-94E2-D2E938D0EFEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DFD2FE1-2848-4F92-94E2-D2E938D0EFEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DFD2FE1-2848-4F92-94E2-D2E938D0EFEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DFD2FE1-2848-4F92-94E2-D2E938D0EFEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
