@@ -6,13 +6,13 @@ namespace PersonInfo
 {
     public class Citizen : IPerson, IIdentifiable, IBirthable
     {
-        public string Name { get; set; }
+        public string Name { get; }
 
-        public int Age { get; set; }
+        public int Age { get;  }
 
-        public string Id { get; set; }
+        public string Id { get;  }
 
-        public string Birthdate { get; set; }
+        public string Birthdate { get; }
 
         public Citizen(string name, int age, string id, string birthdate)
         {

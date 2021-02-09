@@ -6,6 +6,6 @@ namespace Telephony
 {
     public interface IBrowsable
     {
-        public string Browse { get;}
+        public string Browse(string webSite);
     }
 }

@@ -6,6 +6,6 @@ namespace Telephony
 {
     public interface ICallable
     {
-        public string Number { get; }
+        public string Call(string phoneNumber);
     }
 }
