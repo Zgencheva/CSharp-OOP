@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 using BirthdayCelebrations.Contracts;
@@ -16,48 +17,55 @@ namespace BirthdayCelebrations.Core
 
         public void Run()
         {
-            List<IBirthdayable> all = new List<IBirthdayable>();
+            List<Citizen> citizens = new List<Citizen>();
+            List<Rebel> rebels = new List<Rebel>();
             //DateTime DATE = new DateTime(2015, 02, 03);
+            int n = int.Parse(Console.ReadLine());
+            int totalAmount = 0;
+            for (int i = 0; i < n; i++)
+            {
+                string command = Console.ReadLine();
+                string[] tokens = command.Split();
+                if (tokens.Length == 4)
+                {
+                    string[] date = tokens[3].Split('/');
+                    DateTime thisBirthdate = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
+                    Citizen citizen = new Citizen(tokens[0], int.Parse(tokens[1]), tokens[2], thisBirthdate);
+                    citizens.Add(citizen);
+                }
+                else if (tokens.Length == 3)
+                {
+                   
+                    Rebel rebel = new Rebel(tokens[0], int.Parse(tokens[1]), tokens[2]);
+                    rebels.Add(rebel);
+
+                }
+               
+            }
             
             while (true)
             {
-                string command = Console.ReadLine();
-                if (command == "End")
+                string buyer = Console.ReadLine();
+                if (buyer == "End")
                 {
                     break;
                 }
-                string[] tokens = command.Split();
-                if (tokens[0] == "Citizen")
+                if (citizens.Any(x=> x.Name == buyer))
                 {
-                    string[] date = tokens[4].Split('/');
-                    DateTime thisBirthdate = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
-                    IBirthdayable citizen = new Citizen(tokens[1], int.Parse(tokens[2]), tokens[3], thisBirthdate);
-                    all.Add(citizen);
+                    Citizen current = citizens.Where(x => x.Name == buyer).FirstOrDefault();
+                    current.BuyFood();
+                    totalAmount += 10;
                 }
-                else if (tokens[0] == "Pet")
+                else if (rebels.Any(x=> x.Name == buyer))
                 {
-                    string[] date = tokens[2].Split('/');
-                    DateTime thisBirthdate = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
-                    IBirthdayable robot = new Pet(tokens[0], thisBirthdate);
-                    all.Add(robot);
-
-                }
-                else
-                {
-                    continue;
-                }
+                    Rebel current = rebels.Where(x => x.Name == buyer).FirstOrDefault();
+                    current.BuyFood();
+                    totalAmount += 5;
+                }       
+                
             }
 
-            int year = int.Parse(Console.ReadLine());
-
-            for (int i = 0; i < all.Count; i++)
-            {
-                if (all[i].BirthDate.Year == year)
-                {
-                    //10/10/1990
-                    Console.WriteLine($"{all[i].BirthDate.Day:d2}/{all[i].BirthDate.Month:d2}/{all[i].BirthDate.Year}");
-                }
-            }
+            Console.WriteLine(totalAmount);
 
         }
     }
