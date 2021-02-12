@@ -6,8 +6,8 @@ using MilitaryElite2.Models;
 
 namespace MilitaryElite2.Contracts
 {
-    public interface ICommando
+    public interface ICommando : ISpecialisedSoldier
     {
-        public List<Mission> Missions { get;}
+        public ICollection<Mission> Missions { get;}
     }
 }

@@ -14,7 +14,7 @@ namespace MilitaryElite2.Models
             this.Privates = new List<ISoldier>();
         }
 
-        public List<ISoldier> Privates { get; set; }
+        public ICollection<ISoldier> Privates { get; set; }
 
         public void AddPriveteToList(List<ISoldier> allSoldiers, int privateID)
         {

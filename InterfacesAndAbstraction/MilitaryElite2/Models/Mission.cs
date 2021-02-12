@@ -2,47 +2,33 @@
 using System.Collections.Generic;
 using System.Text;
 
+using MilitaryElite2.Contracts;
+using MilitaryElite2.Enumerations;
+
 namespace MilitaryElite2.Models
 {
-    public class Mission
+    public class Mission : IMission
     {
-        private string state;
-        public string CodeName { get; set; }
-        public string State 
-        {
-            get
-            {
-                return this.state;
-            }
-            set 
-            {
-                if (value == "Finished" || value == "inProgress")
-                {
-                    this.state = value;
-                }
-                else
-                {
-                    throw new ArgumentException("Invalid mission");
-                }
-                
-            }
-
-        }
-
-        public Mission(string codeName, string state)
+        public Mission(string codeName, MissionStateEnum missionStateEn)
         {
             this.CodeName = codeName;
-            this.State = state;
+            this.missionStateEnum = missionStateEn;
         }
+        
+        public MissionStateEnum missionStateEnum { get; }
 
-        public void CompleteMission()
+        public string CodeName { get; set; }
+
+        public void CompleteMission(string missionName)
         {
-            this.State = "Finished";
+           
         }
 
         public override string ToString()
         {
-            return $"Code Name: {this.CodeName} State: {this.State}";
+            return $"Code Name: {this.CodeName} State: {this.missionStateEnum.ToString()}";
         }
+
+        
     }
 }

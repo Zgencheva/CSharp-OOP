@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using System.Text;
 
 using MilitaryElite2.Contracts;
+using MilitaryElite2.Enumerations;
 
 namespace MilitaryElite2.Models
 {
     public class Engineer : SpecialSoldier, IEngineer
     {
-        public Engineer(int id, string firstName, string lastName, decimal salary, string corp) : base(id, firstName, lastName, salary, corp)
+        public Engineer(int id, string firstName, string lastName, decimal salary, SoldierCorpEnum soldierCorpEnum) 
+            : base(id, firstName, lastName, salary, soldierCorpEnum)
         {
             this.Repairs = new List<Repair>();
         }
 
-        public List<Repair> Repairs { get; set; }
+        public ICollection<Repair> Repairs { get; set; }
 
         public void AddRepair(Repair repairPart)
         {
@@ -24,7 +26,7 @@ namespace MilitaryElite2.Models
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"Name: {this.FirstName} {this.LastName} Id: {this.Id} Salary: {this.Salary:f2}");
-            sb.AppendLine($"Corps: {this.Corp}");
+            sb.AppendLine($"Corps: {this.soldierCorpEnum.ToString()}");
             sb.AppendLine("Repairs:");
             if (this.Repairs.Count != 0)
             {
