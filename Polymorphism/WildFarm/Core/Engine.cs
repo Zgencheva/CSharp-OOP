@@ -9,16 +9,7 @@ namespace WildFarm.Core
 {
     public class Engine : IEngine
     {
-        //private readonly Food fruit;
-        //private readonly Food vegetable;
-        //private readonly Food seeds;
-        //private readonly Food meat;
-        //private readonly Animal owl;
-        //private readonly Animal hen;
-        //private readonly Animal mouse;
-        //private readonly Animal dog;
-        //private readonly Animal cat;
-        //private readonly Animal tiger;
+
         private readonly FoodFactory foodFactory;
         private readonly AnimalFactory animalFactory;
         public Engine()

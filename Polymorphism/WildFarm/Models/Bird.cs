@@ -6,7 +6,7 @@ namespace WildFarm.Models
 {
     public abstract class Bird : Animal
     {
-        public double WingSize { get; set; }
+        public double WingSize { get; }
         public Bird(string name, double weight, double wingSize) : base(name, weight)
         {
             this.WingSize = wingSize;

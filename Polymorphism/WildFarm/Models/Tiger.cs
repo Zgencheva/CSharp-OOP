@@ -6,25 +6,18 @@ using WildFarm.Models.Contracts;
 
 namespace WildFarm.Models
 {
-    public class Tiger : Feline, IEat, IProduceSound
+    public class Tiger : Feline
     {
-        private const double Weight_Increasement_per_piece = 1;
+        
         public Tiger(string name, double weight, string livingRegion, string bread) : base(name, weight, livingRegion, bread)
         {
         }
 
-        public override void Eat(Food food)
-        {
-            if (food is Meat)
-            {
-                this.Weight += food.Quantity * Weight_Increasement_per_piece;
-                this.FoodEaten += food.Quantity;
-            }
-            else
-            {
-                throw new InvalidOperationException(string.Format(ExceptionMessages.InvalidFoodType, this.GetType().Name, food.GetType().Name));
-            }
-        }
+        public override double WeightMultiplier => 1;
+        public override ICollection<Type> PreferredFoods =>
+            new List<Type>() { typeof(Meat) };
+
+        
 
         public override string IAskForFood()
         {

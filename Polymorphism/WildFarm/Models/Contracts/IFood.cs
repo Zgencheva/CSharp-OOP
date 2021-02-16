@@ -4,8 +4,8 @@ using System.Text;
 
 namespace WildFarm.Models.Contracts
 {
-    public interface IProduceSound
+    public interface IFood
     {
-        public string IAskForFood();
+        int Quantity { get; }
     }
 }

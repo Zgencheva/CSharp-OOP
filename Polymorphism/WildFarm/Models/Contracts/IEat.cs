@@ -6,6 +6,14 @@ namespace WildFarm.Models.Contracts
 {
     public interface IEat
     {
-        public void Eat(Food food);
+        public void Eat(IFood food);
+
+        int FoodEaten { get; }
+
+        double WeightMultiplier { get; }
+
+        ICollection<Type> PreferredFoods { get; }
+
+
     }
 }

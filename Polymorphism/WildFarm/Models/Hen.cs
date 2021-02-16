@@ -5,18 +5,18 @@ using WildFarm.Models.Contracts;
 
 namespace WildFarm.Models
 {
-    public class Hen : Bird, IEat, IProduceSound
+    public class Hen : Bird
     {
-        private const double Weight_Increasement_per_piece = 0.35;
+        
         public Hen(string name, double weight, double wingSize) : base(name, weight, wingSize)
         {
         }
 
-        public override void Eat(Food food)
-        {
-            this.Weight += food.Quantity * Weight_Increasement_per_piece;
-            this.FoodEaten += food.Quantity;
-        }
+        public override double WeightMultiplier => 0.35;
+
+        public override ICollection<Type> PreferredFoods =>
+           new List<Type>() { typeof(Meat), typeof(Seeds), typeof(Vegetable)
+           , typeof(Fruit)};
 
         public override string IAskForFood()
         {

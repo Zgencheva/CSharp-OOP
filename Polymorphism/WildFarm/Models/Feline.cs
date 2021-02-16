@@ -6,7 +6,7 @@ namespace WildFarm.Models
 {
     public abstract class Feline : Mammal
     {
-        public string Bread { get; private set; }
+        public string Bread { get; }
         protected Feline(string name, double weight, string livingRegion, string bread) : base(name, weight, livingRegion)
         {
             this.Bread = bread;

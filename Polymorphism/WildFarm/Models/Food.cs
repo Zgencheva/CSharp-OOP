@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using WildFarm.Models.Contracts;
 
 namespace WildFarm.Models
 {
-    public abstract class Food
-    {
-        public int Quantity { get; private set; }
+    public abstract class Food : IFood
 
-        public Food(int quantity)
+    {
+        public int Quantity { get; }
+
+        protected Food(int quantity)
         {
             this.Quantity = quantity;
         }
