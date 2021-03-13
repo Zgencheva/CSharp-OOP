@@ -47,4 +47,10 @@ public class DummyTests
            );
     }
 
+    [Test]
+    public void FileExists()
+    {
+        Assert.That(@"E:\C#-OOP\UnitTesting", Does.Exist);
+    }
+
 }
