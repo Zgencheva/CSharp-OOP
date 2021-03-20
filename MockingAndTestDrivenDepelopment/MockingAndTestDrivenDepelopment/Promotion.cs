@@ -13,6 +13,15 @@ namespace MockingAndTestDrivenDepelopment
             dateToday = today;
         }
 
+        public Promotion()
+            : this(DateTime.Now)
+        {
+
+        }
+        public int CalculateDiscount(int price)
+        {
+            return price - price * Get() / 100;
+        }
         public int Get()
         {
             if (dateToday.DayOfWeek == DayOfWeek.Monday)
