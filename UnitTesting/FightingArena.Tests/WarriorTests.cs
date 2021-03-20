@@ -18,7 +18,11 @@ namespace Tests
         [TestCase("warName", 25, 233)]
         [TestCase("warName", 100, 78)]
         [TestCase("warName", 39, 45)]
-        public void ConstructorWorksProperlyWithCorrectData(string name, int damage, int hp)
+        [TestCase("warName", 39, 0)]
+        public void ConstructorWorksProperlyWithCorrectData(
+            string name, 
+            int damage, 
+            int hp)
         {
             warrior = new Warrior(name, damage, hp);
 
@@ -100,46 +104,59 @@ namespace Tests
                 );
         }
 
-        [Test]
-        public void WarriorHPShouldBeDecreesedWithDamageValueOfTheAttackedWarrior()
-        {
-            //Arrange
-            Warrior warriorToAttack = new Warrior("attackedOne", 10, 100);
+        //[Test]
+        //public void WarriorHPShouldBeDecreesedWithDamageValueOfTheAttackedWarrior()
+        //{
+        //    //Arrange
+        //    Warrior warriorToAttack = new Warrior("attackedOne", 10, 100);
+        //    warrior = new Warrior("warName", 25, 233);
+        //    //Act
+        //    warrior.Attack(warriorToAttack);
 
+        //    //Assert
+        //    int expectedResult = 233 - 10;
+        //    Assert.That(expectedResult == warrior.HP); 
+        //}
+
+        //[Test]
+        //public void AttackedWarriorShouldLooseHPWithDamageValueOfTheWarrior()
+        //{
+        //    //Arrange
+        //    Warrior warriorToAttack = new Warrior("attackedOne", 10, 100);
+        //    warrior = new Warrior("warName", 25, 233);
+        //    //Act
+        //    warrior.Attack(warriorToAttack);
+
+        //    //Assert
+        //    int expectedResult = 100 - 25;
+        //    Assert.That(expectedResult == warriorToAttack.HP);
+        //}
+
+        [Test]
+        [TestCase("Stoyan", 10, 50, 40, "Ivan", 10, 50, 40)]
+        [TestCase("Stoyan", 20, 100, 90, "Ivan", 10, 70, 50)]
+        [TestCase("Stoyan", 50, 100, 90, "Ivan", 10, 40, 0)]
+        public void AttackedWarriorShouldLooseAllHPIfDamageOfTheWorriorIsMoreThanHisHP(
+            string attackerName, int attackerDamage, int attackerHP, int attackerHPLeft
+            ,string defenderName, int defenderDamage, int DefenderHP,
+            int defenderHPLeft)
+        {
+            //if (this.Damage > warrior.HP)
+            //{
+            //    warrior.HP = 0;
+            //}
+
+            //Arrange
+            var fighter = new Warrior(attackerName, attackerDamage, attackerHP);
+            var defender = new Warrior(defenderName, defenderDamage, DefenderHP);
             //Act
-            warrior.Attack(warriorToAttack);
+            fighter.Attack(defender);
 
             //Assert
-            int expectedResult = 233 - 10;
-            Assert.That(expectedResult == warrior.HP); 
-        }
-
-        [Test]
-        public void AttackedWarriorShouldLooseHPWithDamageValueOfTheWarrior()
-        {
-            //Arrange
-            Warrior warriorToAttack = new Warrior("attackedOne", 10, 100);
-
-            //Act
-            warrior.Attack(warriorToAttack);
-
-            //Assert
-            int expectedResult = 100 - 25;
-            Assert.That(expectedResult == warriorToAttack.HP);
-        }
-
-        [Test]
-        public void AttackedWarriorShouldLooseAllHPIfDamageOfTheWorriorIsMoreThanHisHP()
-        {
-            //Arrange
-            Warrior warriorToAttack = new Warrior("attackedOne", 100, 100);
-            warrior = new Warrior("war", 120, 100);
-            //Act
-            warrior.Attack(warriorToAttack);
-
-            //Assert
-            int expectedResult = 0;
-            Assert.That(expectedResult == warriorToAttack.HP);
+            var expectedFighterHP = attackerHPLeft;
+            var expectedDefenderHP = defenderHPLeft;
+            Assert.That(expectedFighterHP == fighter.HP);
+            Assert.That(expectedDefenderHP == defender.HP);
         }
 
 
