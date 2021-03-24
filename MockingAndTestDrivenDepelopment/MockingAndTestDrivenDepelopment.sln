@@ -11,9 +11,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FakeAxeAndDummy", "FakeAxeA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FakeAxeAndDummy.Tests", "FakeAxeAndDummy.Tests\FakeAxeAndDummy.Tests.csproj", "{201E631A-7B74-4BD6-BA85-FDCAEBEDF989}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FizzBuzz.Tests", "FizzBuzz.Tests\FizzBuzz.Tests.csproj", "{E1B52F80-505B-4F92-A353-CC1E4E148444}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FizzBuzz.Tests", "FizzBuzz.Tests\FizzBuzz.Tests.csproj", "{E1B52F80-505B-4F92-A353-CC1E4E148444}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FizzBuzz", "FizzBuzz\FizzBuzz.csproj", "{DA697BEF-45DD-4B87-A23D-F5D96E37CAD7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FizzBuzz", "FizzBuzz\FizzBuzz.csproj", "{DA697BEF-45DD-4B87-A23D-F5D96E37CAD7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChainBlock", "ChainBlock\ChainBlock.csproj", "{5D012375-9093-48E0-9808-3B3F3CFE2916}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chainblock.Tests", "Chainblock.Tests\Chainblock.Tests.csproj", "{9F017B7E-B2CE-45AB-8FC0-EC2A880DF72F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,14 @@ Global
 		{DA697BEF-45DD-4B87-A23D-F5D96E37CAD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA697BEF-45DD-4B87-A23D-F5D96E37CAD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA697BEF-45DD-4B87-A23D-F5D96E37CAD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D012375-9093-48E0-9808-3B3F3CFE2916}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D012375-9093-48E0-9808-3B3F3CFE2916}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D012375-9093-48E0-9808-3B3F3CFE2916}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D012375-9093-48E0-9808-3B3F3CFE2916}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F017B7E-B2CE-45AB-8FC0-EC2A880DF72F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F017B7E-B2CE-45AB-8FC0-EC2A880DF72F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F017B7E-B2CE-45AB-8FC0-EC2A880DF72F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F017B7E-B2CE-45AB-8FC0-EC2A880DF72F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
