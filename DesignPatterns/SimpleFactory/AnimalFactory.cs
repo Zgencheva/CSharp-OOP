@@ -12,7 +12,7 @@ namespace SimpleFactory
             {
                 return new PeshoJivotnoto();
             }
-            if (name =="lyvy")
+            else
             {
                 return new Lion();
             }

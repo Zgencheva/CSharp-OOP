@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FactoryMethod
 {
-    public interface ICarnivore
+    public interface IAnimal
     {
         public string Name { get; set; }
 
