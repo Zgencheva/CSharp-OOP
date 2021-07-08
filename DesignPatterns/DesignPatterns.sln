@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuilderPattern", "BuilderPa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrototypePattern", "PrototypePattern\PrototypePattern.csproj", "{62F81BAF-440F-446C-A7E3-1F48AAB37339}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LazyLoading", "LazyLoading\LazyLoading.csproj", "{3EEDFE5C-59EB-47CF-B58B-D6AA4E532F47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompositePattern", "CompositePattern\CompositePattern.csproj", "{B713AD35-C861-4BF3-88E5-1F89E3FC0DF5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{62F81BAF-440F-446C-A7E3-1F48AAB37339}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62F81BAF-440F-446C-A7E3-1F48AAB37339}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62F81BAF-440F-446C-A7E3-1F48AAB37339}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EEDFE5C-59EB-47CF-B58B-D6AA4E532F47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EEDFE5C-59EB-47CF-B58B-D6AA4E532F47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EEDFE5C-59EB-47CF-B58B-D6AA4E532F47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EEDFE5C-59EB-47CF-B58B-D6AA4E532F47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B713AD35-C861-4BF3-88E5-1F89E3FC0DF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B713AD35-C861-4BF3-88E5-1F89E3FC0DF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B713AD35-C861-4BF3-88E5-1F89E3FC0DF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B713AD35-C861-4BF3-88E5-1F89E3FC0DF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
