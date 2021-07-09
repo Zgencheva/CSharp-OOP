@@ -11,17 +11,23 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FactoryMethodAndAbstractFac
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbstractFactory", "AbstractPattern\AbstractFactory.csproj", "{7C7BBB03-7A8D-4F33-B4C3-130525F0E032}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuilderPattern", "BuilderPattern\BuilderPattern.csproj", "{73CA54D4-4E2D-411A-A5BE-A31600C52B93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuilderPattern", "BuilderPattern\BuilderPattern.csproj", "{73CA54D4-4E2D-411A-A5BE-A31600C52B93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrototypePattern", "PrototypePattern\PrototypePattern.csproj", "{62F81BAF-440F-446C-A7E3-1F48AAB37339}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrototypePattern", "PrototypePattern\PrototypePattern.csproj", "{62F81BAF-440F-446C-A7E3-1F48AAB37339}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LazyLoading", "LazyLoading\LazyLoading.csproj", "{3EEDFE5C-59EB-47CF-B58B-D6AA4E532F47}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LazyLoading", "LazyLoading\LazyLoading.csproj", "{3EEDFE5C-59EB-47CF-B58B-D6AA4E532F47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompositePattern", "CompositePattern\CompositePattern.csproj", "{B713AD35-C861-4BF3-88E5-1F89E3FC0DF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompositePattern", "CompositePattern\CompositePattern.csproj", "{B713AD35-C861-4BF3-88E5-1F89E3FC0DF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DecoratorPattern", "DecoratorPattern\DecoratorPattern.csproj", "{87CCF3C7-0F13-4FF5-8712-184484D1CDE7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DecoratorPattern", "DecoratorPattern\DecoratorPattern.csproj", "{87CCF3C7-0F13-4FF5-8712-184484D1CDE7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChainOfResponsibility", "ChainOfResponsibility\ChainOfResponsibility.csproj", "{497ED56D-039E-440B-BA93-6FD8156D055E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChainOfResponsibility", "ChainOfResponsibility\ChainOfResponsibility.csproj", "{497ED56D-039E-440B-BA93-6FD8156D055E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommandPattern", "CommandPattern\CommandPattern.csproj", "{701777F9-3034-4510-BBC0-51C635FEBA53}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StrategyPattern", "StrategyPattern\StrategyPattern.csproj", "{6C456CC9-588A-49B5-8C10-29252A972867}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrototypePatternShallowAndDeepCopyExample", "PrototypePatternShallowAndDeepCopyExample\PrototypePatternShallowAndDeepCopyExample.csproj", "{F4AF4DCF-CDC1-4D12-9029-77731379C7F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +75,18 @@ Global
 		{497ED56D-039E-440B-BA93-6FD8156D055E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{497ED56D-039E-440B-BA93-6FD8156D055E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{497ED56D-039E-440B-BA93-6FD8156D055E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{701777F9-3034-4510-BBC0-51C635FEBA53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{701777F9-3034-4510-BBC0-51C635FEBA53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{701777F9-3034-4510-BBC0-51C635FEBA53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{701777F9-3034-4510-BBC0-51C635FEBA53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C456CC9-588A-49B5-8C10-29252A972867}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C456CC9-588A-49B5-8C10-29252A972867}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C456CC9-588A-49B5-8C10-29252A972867}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C456CC9-588A-49B5-8C10-29252A972867}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4AF4DCF-CDC1-4D12-9029-77731379C7F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4AF4DCF-CDC1-4D12-9029-77731379C7F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4AF4DCF-CDC1-4D12-9029-77731379C7F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4AF4DCF-CDC1-4D12-9029-77731379C7F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
