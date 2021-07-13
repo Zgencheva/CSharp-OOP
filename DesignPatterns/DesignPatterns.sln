@@ -29,6 +29,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StrategyPattern", "Strategy
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrototypePatternShallowAndDeepCopyExample", "PrototypePatternShallowAndDeepCopyExample\PrototypePatternShallowAndDeepCopyExample.csproj", "{F4AF4DCF-CDC1-4D12-9029-77731379C7F1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiftCompositePattern", "GiftCompositePattern\GiftCompositePattern.csproj", "{7E146B28-382F-4B76-BAB6-71A41682A815}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplatePattern", "TemplatePattern\TemplatePattern.csproj", "{FEAA0ED9-C39E-43E9-BDCF-9C4225561777}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +91,14 @@ Global
 		{F4AF4DCF-CDC1-4D12-9029-77731379C7F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4AF4DCF-CDC1-4D12-9029-77731379C7F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4AF4DCF-CDC1-4D12-9029-77731379C7F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E146B28-382F-4B76-BAB6-71A41682A815}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E146B28-382F-4B76-BAB6-71A41682A815}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E146B28-382F-4B76-BAB6-71A41682A815}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E146B28-382F-4B76-BAB6-71A41682A815}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEAA0ED9-C39E-43E9-BDCF-9C4225561777}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEAA0ED9-C39E-43E9-BDCF-9C4225561777}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEAA0ED9-C39E-43E9-BDCF-9C4225561777}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEAA0ED9-C39E-43E9-BDCF-9C4225561777}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -25,6 +25,7 @@ namespace PrototypePatternShallowAndDeepCopyExample
             sandwich2.Bread = new string(this.Bread);
             sandwich2.Meet = new string(this.Meet);
             sandwich2.Veggie = new string(this.Veggie);
+            //syzdavame nova referenciq na drink, za da se kopira, a ne da se prehvyrlq!
             sandwich2.Drink = new Drink(this.Drink.Name);
           
             return sandwich2;
