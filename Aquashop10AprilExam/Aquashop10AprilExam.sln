@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AquaShop", "AquaShop\AquaShop.csproj", "{C6787EB4-EAAA-40CC-92C0-BC9BEADAA9FF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C6787EB4-EAAA-40CC-92C0-BC9BEADAA9FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6787EB4-EAAA-40CC-92C0-BC9BEADAA9FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6787EB4-EAAA-40CC-92C0-BC9BEADAA9FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6787EB4-EAAA-40CC-92C0-BC9BEADAA9FF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {63A10CB4-52E4-4D7B-916C-431728A834E4}
+	EndGlobalSection
+EndGlobal
