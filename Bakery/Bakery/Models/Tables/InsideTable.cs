@@ -8,12 +8,12 @@ namespace Bakery.Models.Tables
     {
         private const decimal InitialPricePerPerson = 2.5m;
 
-        public InsideTable(int tableNumber, int capacity) : base(tableNumber, capacity)
+        public InsideTable(int tableNumber, int capacity) : base(tableNumber, capacity, InitialPricePerPerson)
         {
         }
 
-        public override decimal PricePerPerson => InitialPricePerPerson;
-        public override decimal Price => base.NumberOfPeople * this.PricePerPerson;
+        //public override decimal PricePerPerson => InitialPricePerPerson;
+        //public override decimal Price => base.NumberOfPeople * this.PricePerPerson;
 
     }
 }

@@ -19,23 +19,15 @@ namespace Bakery.Models.Tables
         private ICollection<IDrink> drinkOrders;
         private TableType type;
 
-        protected Table()
+        protected Table(int tableNumber, int capacity, decimal pricePerPerson)
         {
             this.foodOrders = new List<IBakedFood>();
             this.drinkOrders = new List<IDrink>();
-        }
-        protected Table(int tableNumber, int capacity)
-            :this()
-        {
             this.TableNumber = tableNumber;
             this.Capacity = capacity;
-           
-        }
-        protected Table(int tableNumber, int capacity, decimal pricePerPerson)
-            : this(tableNumber, capacity)
-        {
             this.PricePerPerson = pricePerPerson;
         }
+        
         public int TableNumber { get; private set; }
 
         public int Capacity {
@@ -68,19 +60,16 @@ namespace Bakery.Models.Tables
             }
         }
 
-        public virtual decimal PricePerPerson { get; private set; }
+        public decimal PricePerPerson { get; private set; }
 
         public bool IsReserved { get; private set; }
 
-        public virtual decimal Price {
+        public decimal Price {
             get
             {
-                return this.price; 
+                return this.PricePerPerson * this.NumberOfPeople; 
             }
-            private set 
-            {
-                this.price = this.PricePerPerson * this.NumberOfPeople;
-            }
+           
         
         }
 
@@ -89,12 +78,12 @@ namespace Bakery.Models.Tables
             this.foodOrders.Clear();
             this.drinkOrders.Clear();
             this.IsReserved = false;
-            this.capacity = 0;
+            this.numberOfPeople = 0; //kogato minavame prez poleto, ne pravi proverkata
         }
 
         public decimal GetBill()
         {
-            decimal finalBill = this.Price;
+            decimal finalBill = 0;
             foreach (var food in foodOrders)
             {
                 finalBill += food.Price;
@@ -103,18 +92,22 @@ namespace Bakery.Models.Tables
             {
                 finalBill += drink.Price;
             }
-          
+            finalBill += this.Price;
             return finalBill;
         }
 
         public string GetFreeTableInfo()
         {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"Table: {this.TableNumber}");
-            sb.AppendLine($"Type: {this.GetType().Name}");
-            sb.AppendLine($"Price per Person: {this.PricePerPerson:F2}");
+            return $"Table: {this.TableNumber}\r\n" 
+                + $"Type: {this.GetType().Name}\r\n" 
+                + $"Capacity: {this.Capacity}\r\n"
+                + $"Price per Person: {this.PricePerPerson:F2}";
+            //StringBuilder sb = new StringBuilder();
+            //sb.AppendLine($"Table: {this.TableNumber}");
+            //sb.AppendLine($"Type: {this.GetType().Name}");
+            //sb.AppendLine($"Price per Person: {this.PricePerPerson:F2}");
 
-            return sb.ToString().TrimEnd();
+            //return sb.ToString().TrimEnd();
         }
 
         public void OrderDrink(IDrink drink)

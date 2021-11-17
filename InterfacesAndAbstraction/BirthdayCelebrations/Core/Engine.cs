@@ -19,29 +19,29 @@ namespace BirthdayCelebrations.Core
         {
             List<Citizen> citizens = new List<Citizen>();
             List<Rebel> rebels = new List<Rebel>();
-            //DateTime DATE = new DateTime(2015, 02, 03);
-            int n = int.Parse(Console.ReadLine());
+            DateTime DATE = new DateTime(2015, 02, 03);
+            //int n = int.Parse(Console.ReadLine());
             int totalAmount = 0;
-            for (int i = 0; i < n; i++)
-            {
-                string command = Console.ReadLine();
-                string[] tokens = command.Split();
-                if (tokens.Length == 4)
-                {
-                    string[] date = tokens[3].Split('/');
-                    DateTime thisBirthdate = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
-                    Citizen citizen = new Citizen(tokens[0], int.Parse(tokens[1]), tokens[2], thisBirthdate);
-                    citizens.Add(citizen);
-                }
-                else if (tokens.Length == 3)
-                {
+            //for (int i = 0; i < n; i++)
+            //{
+            //    string command = Console.ReadLine();
+            //    string[] tokens = command.Split();
+            //    if (tokens.Length == 4)
+            //    {
+            //        string[] date = tokens[3].Split('/');
+            //        DateTime thisBirthdate = new DateTime(int.Parse(date[2]), int.Parse(date[1]), int.Parse(date[0]));
+            //        Citizen citizen = new Citizen(tokens[0], int.Parse(tokens[1]), tokens[2], thisBirthdate);
+            //        citizens.Add(citizen);
+            //    }
+            //    else if (tokens.Length == 3)
+            //    {
                    
-                    Rebel rebel = new Rebel(tokens[0], int.Parse(tokens[1]), tokens[2]);
-                    rebels.Add(rebel);
+            //        Rebel rebel = new Rebel(tokens[0], int.Parse(tokens[1]), tokens[2]);
+            //        rebels.Add(rebel);
 
-                }
+            //    }
                
-            }
+            //}
             
             while (true)
             {
@@ -64,7 +64,7 @@ namespace BirthdayCelebrations.Core
                 }       
                 
             }
-
+            DateTime date = new DateTime(Console.ReadLine());
             Console.WriteLine(totalAmount);
 
         }

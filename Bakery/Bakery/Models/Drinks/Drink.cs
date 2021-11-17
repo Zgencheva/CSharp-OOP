@@ -14,19 +14,21 @@ namespace Bakery.Models.Drinks
         private string brand;
         private DrinkType type;
 
-        protected Drink(string name, int portion, string brand)
+        protected Drink(string name, int portion, decimal price, string brand)
         {
             this.Name = name;
             this.Portion = portion;
-            this.Brand = brand;
-        }
-        protected Drink(string name, int portion, string brand, decimal price)
-            : this(name, portion, brand)
-        {
-           
             this.Price = price;
-
+            this.Brand = brand;
+            
         }
+        //protected Drink(string name, int portion, string brand, decimal price)
+        //    : this(name, portion, brand)
+        //{
+           
+        //    this.Price = price;
+
+        //}
 
 
         public string Name
@@ -60,7 +62,7 @@ namespace Bakery.Models.Drinks
             }
         }
 
-        public virtual decimal Price
+        public decimal Price
         {
             get
             {

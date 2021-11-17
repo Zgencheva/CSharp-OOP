@@ -8,10 +8,10 @@ namespace Bakery.Models.BakedFoods
     {
         private const int InitialBreadPortion = 200;
 
-        public Bread(string name, decimal price) : base(name, price)
+        public Bread(string name, decimal price) : base(name, InitialBreadPortion, price)
         {
         }
 
-        public override int Portion => InitialBreadPortion;
+        //public override int Portion => InitialBreadPortion;
     }
 }

@@ -13,18 +13,19 @@ namespace Bakery.Models.BakedFoods
         private decimal price;
         private BakedFoodType type;
 
-        protected BakedFood(string name, decimal price)
+        protected BakedFood(string name, int portion, decimal price)
         {
             this.Name = name;
             this.Price = price;
-        }
-        protected BakedFood(string name, int portion, decimal price)
-            :this(name, price)
-        {
-
             this.Portion = portion;
-
         }
+        //protected BakedFood(string name, int portion, decimal price)
+        //    :this(name, price)
+        //{
+
+        //    this.Portion = portion;
+
+        //}
         public string Name {
 
             get
@@ -41,7 +42,7 @@ namespace Bakery.Models.BakedFoods
             }
         }
 
-        public virtual int Portion
+        public int Portion
         {
             get
             {
@@ -76,7 +77,7 @@ namespace Bakery.Models.BakedFoods
         public override string ToString()
         {
 
-            return $"{this.Name}: {this.Portion}g - {this.Price:f2}";
+            return $"{this.Name}: {this.Portion}g - {this.Price:F2}";
         }
     }
 }

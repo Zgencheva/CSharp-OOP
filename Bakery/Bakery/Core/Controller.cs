@@ -17,17 +17,17 @@ namespace Bakery.Core
     {
         private ICollection<ITable> tables;
         private ICollection<IDrink> drinks;
-        private ICollection<IBakedFood> foods;
-        private IDrink drink;
-        private IBakedFood food;
-        private ITable table;
+        private ICollection<IBakedFood> bakedFoods;
+        //private IDrink drink;
+        //private IBakedFood food;
+        //private ITable table;
         private decimal totalIncome;
 
         public Controller()
         {
             this.tables = new List<ITable>();
             this.drinks = new List<IDrink>();
-            this.foods = new List<IBakedFood>();
+            this.bakedFoods = new List<IBakedFood>();
             totalIncome = 0;
 
         }
@@ -36,27 +36,19 @@ namespace Bakery.Core
 
             if (type == "Tea")
             {
-                this.drink = new Tea(name, portion, brand);
+                drinks.Add(new Tea(name, portion, brand));
+                //this.drink = new Tea(name, portion, brand);
             }
             else if (type == "Water")
             {
-                this.drink = new Water(name, portion, brand);
+                drinks.Add(new Water(name, portion, brand));
+                //this.drink = new Water(name, portion, brand);
 
             }
-
-            if (this.drink != null)
-            {
-                drinks.Add(this.drink);
-                return $"{string.Format(Utilities.Messages.OutputMessages.DrinkAdded, this.drink.Name, this.drink.Brand)}";
-            }
-            else
-            {
-                return null;
-            }
-
-
+                //drinks.Add(this.drink);
+                return $"{string.Format(Utilities.Messages.OutputMessages.DrinkAdded,name,brand)}";
+            
             //return $"Added {this.drink.Name} ({this.drink.Brand}) to the drink menu";
-
 
         }
 
@@ -64,35 +56,31 @@ namespace Bakery.Core
         {
             if (type == "Bread")
             {
-                this.food = new Bread(name, price);
+                this.bakedFoods.Add(new Bread(name, price));
+                //this.food = new Bread(name, price);
             }
             else if (type == "Cake")
             {
-                this.food = new Cake(name, price);
+                this.bakedFoods.Add(new Cake(name, price));
+                //this.food = new Cake(name, price);
 
             }
-            foods.Add(this.food);
+           //bakedFoods.Add(this.food);
 
             //return $"Added {this.drink.Name} ({this.drink.Brand}) to the drink menu";
-            return $"{string.Format(Utilities.Messages.OutputMessages.FoodAdded, this.food.Name, this.food.GetType().Name)}";
+            return $"{string.Format(Utilities.Messages.OutputMessages.FoodAdded, name, type)}";
         }
 
         public string AddTable(string type, int tableNumber, int capacity)
         {
             if (type == "InsideTable")
             {
-                this.table = new InsideTable(tableNumber, capacity);
+                tables.Add(new InsideTable(tableNumber, capacity));
             }
             else if (type == "OutsideTable")
             {
-                this.table = new OutsideTable(tableNumber, capacity);
+                tables.Add(new OutsideTable(tableNumber, capacity));
             }
-
-            if (this.table == null)
-            {
-                return null;
-            }
-            tables.Add(this.table);
 
             return $"{string.Format(Utilities.Messages.OutputMessages.TableAdded, tableNumber)}";
         }
@@ -100,15 +88,8 @@ namespace Bakery.Core
         public string GetFreeTablesInfo()
         {
             StringBuilder sb = new StringBuilder();
-            List<ITable> freeTables = new List<ITable>();
-            foreach (var table in tables)
-            {
-                if (table.IsReserved == false)
-                {
-                    freeTables.Add(table);
-                }
-            }
-
+            List<ITable> freeTables = tables.Where(table => table.IsReserved == false).ToList();
+            
             foreach (var table in freeTables)
             {
                 sb.AppendLine(table.GetFreeTableInfo());
@@ -126,20 +107,20 @@ namespace Bakery.Core
         public string LeaveTable(int tableNumber)
         {
             
-            ITable table = tables.Where(x => x.TableNumber == tableNumber).FirstOrDefault();
+            ITable table = tables.FirstOrDefault(x => x.TableNumber == tableNumber);
             if (table != null)
             {
                 var totalTableSum = table.GetBill();
 
-                this.totalIncome += totalTableSum;
-
+                //this.totalIncome += totalTableSum;
+                totalIncome += totalTableSum;
                 table.Clear();
 
                 var sb = new StringBuilder();
-                sb.AppendLine($"Table: {tableNumber}");
-                sb.AppendLine($"Bill: {totalTableSum:f2}");
+                return $"Table: {tableNumber}\r\n" +
+                $"Bill: {totalTableSum:f2}";
 
-                return sb.ToString().TrimEnd();
+                
             }
             else
             {
@@ -156,15 +137,22 @@ namespace Bakery.Core
             {
                 return $"{string.Format(Utilities.Messages.OutputMessages.WrongTableNumber, tableNumber)}";
             }
-
-            IDrink drink = drinks.Where(x => x.Name == drinkName).Where(y => y.Brand == drinkBrand).FirstOrDefault();
-            if (drink == null)
+            else
             {
-                return $"{string.Format(Utilities.Messages.OutputMessages.NonExistentDrink, drinkName, drinkBrand)}";
-            }
+                IDrink drink = drinks.FirstOrDefault(x => x.Name == drinkName && x.Brand == drinkBrand);
+                if (drink == null)
+                {
+                    return $"{string.Format(Utilities.Messages.OutputMessages.NonExistentDrink, drinkName, drinkBrand)}";
+                }
+                else
+                {
+                    table.OrderDrink(drink);
+                    return $"{string.Format(Utilities.Messages.OutputMessages.DrinkOrderSuccessfull, tableNumber, drinkName, drinkBrand)}";
+                }
 
-            table.OrderDrink(drink);
-            return $"{string.Format(Utilities.Messages.OutputMessages.DrinkOrderSuccessfull, tableNumber, drinkName, drinkBrand)}";
+                
+            }
+           
 
 
         }
@@ -172,28 +160,32 @@ namespace Bakery.Core
         public string OrderFood(int tableNumber, string foodName)
         {
             
-           ITable table = tables.Where(x => x.TableNumber == tableNumber).FirstOrDefault();
+           ITable table = tables.FirstOrDefault(x => x.TableNumber == tableNumber);
             if (table == null)
             {
                 return $"{string.Format(Utilities.Messages.OutputMessages.WrongTableNumber, tableNumber)}";
             }
-
-            IBakedFood food = foods.Where(x => x.Name == foodName).FirstOrDefault();
-            if (food == null)
+            else
             {
-                return $"{string.Format(Utilities.Messages.OutputMessages.NonExistentFood, foodName)}";
-            }
+                IBakedFood food = bakedFoods.Where(x => x.Name == foodName).FirstOrDefault();
+                if (food == null)
+                {
+                    return $"{string.Format(Utilities.Messages.OutputMessages.NonExistentFood, foodName)}";
+                }
+                else
+                {
+                    table.OrderFood(food);
+                    return $"{string.Format(Utilities.Messages.OutputMessages.FoodOrderSuccessful, tableNumber, foodName)}";
+                }
 
-            table.OrderFood(food);
-            return $"{string.Format(Utilities.Messages.OutputMessages.FoodOrderSuccessful, tableNumber, foodName)}";
-
+            }      
 
         }
 
         public string ReserveTable(int numberOfPeople)
 
         {
-            ITable table = tables.Where(x => x.Capacity >= numberOfPeople && x.IsReserved == false).FirstOrDefault();
+            ITable table = tables.Where(x => x.IsReserved == false && x.Capacity >= numberOfPeople).FirstOrDefault();
             if (table == null)
             {
                 return $"{string.Format(Utilities.Messages.OutputMessages.ReservationNotPossible, numberOfPeople)}";
