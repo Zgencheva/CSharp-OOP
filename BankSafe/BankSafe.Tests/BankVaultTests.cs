@@ -55,7 +55,7 @@ namespace BankSafe.Tests
         {
             bankValut = new BankVault();
             item = new Item("Pesho", "Item3345");
-            Assert.Throws<ArgumentException>(() => bankValut.AddItem(cell, item));
+            Assert.Throws<ArgumentException>(() => bankValut.AddItem(cell, item), "Cell doesn't exists!");
         }
 
         [Test]
@@ -65,7 +65,7 @@ namespace BankSafe.Tests
             item = new Item("Pesho", "Item3345");
             Item item2 = new Item("Gosho", "Itemsjfjf");
             bankValut.AddItem("A1", item);
-            Assert.Throws<ArgumentException>(() => bankValut.AddItem("A1", item2));
+            Assert.Throws<ArgumentException>(() => bankValut.AddItem("A1", item2), "Cell is already taken!");
         }
 
         [Test]
@@ -75,7 +75,7 @@ namespace BankSafe.Tests
             item = new Item("Pesho", "Item3345");
             
             bankValut.AddItem("A1", item);
-            Assert.Throws<InvalidOperationException>(() => bankValut.AddItem("A3", item));
+            Assert.Throws<InvalidOperationException>(() => bankValut.AddItem("A3", item), "Item is already in cell!");
         }
 
         [Test]
@@ -87,6 +87,16 @@ namespace BankSafe.Tests
             Assert.That(bankValut.VaultCells["A1"].ItemId == item.ItemId);
             //Assert.That(bankValut.VaultCells.Count == 1);
         }
+
+        [Test]
+        public void TestIfAddMethodReturnsCorrectMEssageWhenItemIsAdded()
+        {
+            bankValut = new BankVault();
+            item = new Item("Pesho", "Item3345");
+            string result = bankValut.AddItem("A1", item);
+            Assert.That(result == $"Item:{item.ItemId} saved successfully!");
+            //Assert.That(bankValut.VaultCells.Count == 1);
+        }
         //check the ADD method:
         [Test]
         [TestCase("A5")]
@@ -96,7 +106,7 @@ namespace BankSafe.Tests
         {
             bankValut = new BankVault();
             item = new Item("Pesho", "Item3345");
-            Assert.Throws<ArgumentException>(() => bankValut.RemoveItem(cell, item));
+            Assert.Throws<ArgumentException>(() => bankValut.RemoveItem(cell, item), "Cell doesn't exists!");
         }
 
         [Test]
@@ -106,7 +116,7 @@ namespace BankSafe.Tests
             item = new Item("Pesho", "Item3345");
             Item item2 = new Item("Gosho", "Itemsjfjf");
             bankValut.AddItem("A1", item);
-            Assert.Throws<ArgumentException>(() => bankValut.RemoveItem("A1", item2));
+            Assert.Throws<ArgumentException>(() => bankValut.RemoveItem("A1", item2), "Item in that cell doesn't exists!");
         }
 
         [Test]
@@ -118,6 +128,17 @@ namespace BankSafe.Tests
             bankValut.AddItem("A1", item);
             bankValut.RemoveItem("A1", item);
             Assert.That(bankValut.VaultCells["A1"] == null);
+        }
+
+        [Test]
+        public void TestIfRemoveMethodReturnsCorrectMEssageWhenItemIsAdded()
+        {
+            bankValut = new BankVault();
+            item = new Item("Pesho", "Item3345");
+            bankValut.AddItem("A1", item);
+            string result = bankValut.RemoveItem("A1", item);
+            Assert.That(result == $"Remove item:{item.ItemId} successfully!");
+            //Assert.That(bankValut.VaultCells.Count == 1);
         }
     }
 }
