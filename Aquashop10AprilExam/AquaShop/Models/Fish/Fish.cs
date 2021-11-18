@@ -10,29 +10,30 @@ namespace AquaShop.Models.Fish
     {
         private string name;
         private string species;
+        //private int size;
         private decimal price;
+
         protected Fish(string name, string species, decimal price)
         {
             this.Name = name;
             this.Species = species;
             this.Price = price;
         }
+
         public string Name
         {
-            //TODO: names are unique
-            get 
-            {
-                return this.name;    
+            get
+            { 
+                return this.name; 
             }
-            private set
+            private set 
             {
                 if (string.IsNullOrWhiteSpace(value))
                 {
-                    //"Fish name cannot be null or empty."
                     throw new ArgumentException(ExceptionMessages.InvalidFishName);
                 }
                 this.name = value;
-            }
+             }
         }
 
         public string Species
@@ -45,14 +46,13 @@ namespace AquaShop.Models.Fish
             {
                 if (string.IsNullOrWhiteSpace(value))
                 {
-                    //"Fish species cannot be null or empty."
                     throw new ArgumentException(ExceptionMessages.InvalidFishSpecies);
                 }
                 this.species = value;
             }
         }
 
-        public virtual int Size { get; protected set; }
+        public int Size { get; protected set; }
 
         public decimal Price
         {
@@ -64,21 +64,13 @@ namespace AquaShop.Models.Fish
             {
                 if (value <=0)
                 {
-                    //"Fish price cannot be below or equal to 0."
                     throw new ArgumentException(ExceptionMessages.InvalidFishPrice);
                 }
                 this.price = value;
             }
-
         }
 
-       
         public abstract void Eat();
-
-        public override string ToString()
-        {
-            return this.Name;
-        }
-
+        
     }
 }

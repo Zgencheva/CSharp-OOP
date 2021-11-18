@@ -1,4 +1,5 @@
-﻿using AquaShop.Models.Decorations.Contracts;
+﻿using AquaShop.Models.Decorations;
+using AquaShop.Models.Decorations.Contracts;
 using AquaShop.Repositories.Contracts;
 using System;
 using System.Collections.Generic;
@@ -9,27 +10,26 @@ namespace AquaShop.Repositories
 {
     public class DecorationRepository : IRepository<IDecoration>
     {
-        private readonly ICollection<IDecoration> decorations;
-
+        private List<IDecoration> models;
         public DecorationRepository()
         {
-            this.decorations = new List<IDecoration>();
+            models = new List<IDecoration>();
         }
-        public IReadOnlyCollection<IDecoration> Models => this.decorations.ToList();
+        public IReadOnlyCollection<IDecoration> Models => models;
 
         public void Add(IDecoration model)
         {
-            decorations.Add(model);
+            models.Add(model);
         }
 
         public IDecoration FindByType(string type)
         {
-            return decorations.FirstOrDefault(x=> x.GetType().Name == type);
+            return models.FirstOrDefault(x=> x.GetType().Name == type);
         }
 
         public bool Remove(IDecoration model)
         {
-            return decorations.Remove(model);
+            return models.Remove(model);
         }
     }
 }

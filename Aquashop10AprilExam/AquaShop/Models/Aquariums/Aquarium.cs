@@ -12,34 +12,19 @@ namespace AquaShop.Models.Aquariums
     public abstract class Aquarium : IAquarium
     {
         private string name;
-        private readonly List<IDecoration> decorations;
-        private readonly List<IFish> fishes;
-        private int comfort;
+        private List<IDecoration> decotarations;
+        private List<IFish> fish;
 
-        protected Aquarium()
-        {
-           
-            this.decorations = new List<IDecoration>();
-            this.fishes = new List<IFish>();
-        }
-        protected Aquarium(string name)
-            :this()
-        {
-            this.Name = name;
-            
-        }
         protected Aquarium(string name, int capacity)
-            :this(name)
         {
-            
-            this.Capacity = capacity;
-            
-
+            Name = name;
+            Capacity = capacity;
+            this.decotarations = new List<IDecoration>();
+            this.fish = new List<IFish>();
         }
 
         public string Name
         {
-            //TODO: names are unique
             get
             {
                 return this.name;
@@ -48,100 +33,81 @@ namespace AquaShop.Models.Aquariums
             {
                 if (string.IsNullOrWhiteSpace(value))
                 {
-                    //""Aquarium name cannot be null or empty."
                     throw new ArgumentException(ExceptionMessages.InvalidAquariumName);
                 }
                 this.name = value;
             }
         }
 
-        public virtual int Capacity { get; private set; }
+        public int Capacity { get; private set; }
 
-        public ICollection<IDecoration> Decorations => this.decorations;
+        public int Comfort => this.Decorations.Sum(x=> x.Comfort); 
+            
 
-        public ICollection<IFish> Fish => this.fishes;
+        public ICollection<IDecoration> Decorations => decotarations;
 
-        public int Comfort
-        {
-            get
-            {
-                return this.comfort;
-            }
-            private set
-            {
-                if (decorations.Count == 0)
-                {
-                    this.comfort = 0;
-                }
-                else
-                {
-                    this.comfort = decorations.Sum(x => x.Comfort);
-                }
-
-            }
-        }
-        private int ComfortCalculation()
-        {
-            if (decorations.Count == 0)
-            {
-                return  0;
-            }
-            else
-            {
-                return decorations.Sum(x => x.Comfort);
-            }
-        }
-
+        public ICollection<IFish> Fish => fish;
 
         public void AddDecoration(IDecoration decoration)
         {
-            decorations.Add(decoration);
-            
+            this.decotarations.Add(decoration);
         }
 
         public void AddFish(IFish fish)
         {
-            if (this.Capacity <= 0)
+            if (this.Fish.Count < this.Capacity)
             {
-                //"Not enough capacity.";
+                this.fish.Add(fish);
+            }
+            else
+            {
                 throw new InvalidOperationException(ExceptionMessages.NotEnoughCapacity);
             }
-            fishes.Add(fish);
         }
 
         public void Feed()
         {
-            foreach (var fish in fishes)
+            foreach (IFish item in fish)
             {
-                fish.Eat();
+                item.Eat();
             }
         }
-        public bool RemoveFish(IFish fish)
-        {
-            return fishes.Remove(fish);
-        }
+
         public string GetInfo()
         {
-            //toChech if count ==0 returns NONE
-            StringBuilder sb = new StringBuilder();
-            //"{aquariumName} ({aquariumType}):
-            //            Fish: { fishName1}, { fishName2}, { fishName3} (…) / none
-            //            Decorations: { decorationsCount}
-            //            Comfort: { aquariumComfort}
-            //                "
-            sb.AppendLine($"{this.Name} ({this.GetType().Name})");
-            sb.Append("Fish: ");
-            if (fishes.Count == 0)
+            string fishString = "";
+            if (fish.Count == 0)
             {
-                sb.AppendLine("none");
+                fishString = "none";
             }
             else
             {
-                sb.AppendLine(string.Join(", ", fishes));
+                fishString = "";
+                //List<IFish> fishToList = fish.ToList();
+                for (int i = 0; i < fish.Count; i++)
+                {
+                    if (i == fish.Count - 1)
+                    {
+                        fishString += $"{fish[i].Name}";
+                    }
+                    else
+                    {
+                        fishString += $"{fish[i].Name}, ";
+                    }
+                }
             }
-            sb.AppendLine($"Decorations: {decorations.Count}");
-            sb.AppendLine($"Comfort: {this.ComfortCalculation()}");
-            return sb.ToString().TrimEnd();
+
+            return $"{this.Name} ({this.GetType().Name}):\r\n" +
+                "Fish: " + fishString + "\r\n" +
+                $"Decorations: {this.Decorations.Count}\r\n" +
+         $"Comfort: {this.Comfort}".TrimEnd();
+            
+
+        }
+
+        public bool RemoveFish(IFish fish)
+        {
+            return this.fish.Remove(fish);
         }
     }
 }

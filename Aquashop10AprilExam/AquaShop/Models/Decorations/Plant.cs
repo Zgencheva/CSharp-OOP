@@ -6,11 +6,8 @@ namespace AquaShop.Models.Decorations
 {
     public class Plant : Decoration
     {
-        public Plant()
+        public Plant() : base(5, 10.0m)
         {
         }
-
-        public override decimal Price => 10;
-        public override int Comfort => 5;
     }
 }

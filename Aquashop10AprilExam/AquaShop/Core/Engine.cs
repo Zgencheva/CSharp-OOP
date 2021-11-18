@@ -14,7 +14,6 @@
 
         public Engine()
         {
-            
             this.writer = new Writer();
             this.reader = new Reader();
             this.controller = new Controller();
@@ -31,7 +30,7 @@
                 }
                 try
                 {
-                string result = string.Empty;
+                    string result = string.Empty;
 
                 if (input[0] == "AddAquarium")
                 {

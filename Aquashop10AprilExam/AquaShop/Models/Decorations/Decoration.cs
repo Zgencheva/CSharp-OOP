@@ -7,20 +7,14 @@ namespace AquaShop.Models.Decorations
 {
     public abstract class Decoration : IDecoration
     {
-        protected Decoration()
-        {
-            
-        }
-
         protected Decoration(int comfort, decimal price)
-            :this()
         {
-            this.Comfort = comfort;
-            this.Price = price;
+            Comfort = comfort;
+            Price = price;
         }
-        
-        public virtual int Comfort { get; private set; }
 
-        public virtual decimal Price { get; private set; }
+        public int Comfort { get; private set; }
+
+        public decimal Price { get; private set; }
     }
 }
