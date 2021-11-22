@@ -15,7 +15,7 @@ namespace AquaShop.Repositories
         {
             models = new List<IDecoration>();
         }
-        public IReadOnlyCollection<IDecoration> Models => models;
+        public IReadOnlyCollection<IDecoration> Models => models.AsReadOnly();
 
         public void Add(IDecoration model)
         {

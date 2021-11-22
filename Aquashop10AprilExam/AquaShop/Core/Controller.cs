@@ -81,7 +81,7 @@ namespace AquaShop.Core
         }
         public string AddFish(string aquariumName, string fishType, string fishName, string fishSpecies, decimal price)
         {
-            IFish currentFish = null;
+            IFish currentFish = default;
             IAquarium currentAquarium = aquariums.FirstOrDefault(x=> x.Name == aquariumName);
             if (fishType == "FreshwaterFish")
             {
