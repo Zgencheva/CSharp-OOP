@@ -101,7 +101,7 @@ namespace SpaceStation.Core
             }
             return $"{exploredPlanetsCount} planets were explored!\r\n" +
                 "Astronauts info:\r\n" +
-                astonautResult.TrimEnd();
+                astonautResult;
             
 
 
