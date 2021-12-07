@@ -30,7 +30,7 @@ namespace SpaceStation.Models.Astronauts
             {
                 if (string.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentException(Utilities.Messages.ExceptionMessages.InvalidAstronautName);
+                    throw new ArgumentNullException(Utilities.Messages.ExceptionMessages.InvalidAstronautName);
                 }
                 this.name = value;
             }
@@ -44,7 +44,7 @@ namespace SpaceStation.Models.Astronauts
             }
             protected set
             {
-                if (value <0)
+                if (value < 0)
                 {
                     throw new ArgumentException(Utilities.Messages.ExceptionMessages.InvalidOxygen);
                 }
@@ -52,9 +52,9 @@ namespace SpaceStation.Models.Astronauts
             }
         }
 
-        public bool CanBreath { get; private set; }
+        public bool CanBreath { get; protected set; }
 
-        public IBag Bag { get; private set; }
+        public IBag Bag { get; }
 
         public virtual void Breath()
         {

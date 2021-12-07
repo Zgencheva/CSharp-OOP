@@ -19,7 +19,7 @@ namespace CarRacing.Repositories
 
         public void Add(IRacer model)
         {
-            if (model is null)
+            if (model == null)
             {
                 throw new ArgumentException(ExceptionMessages.InvalidAddRacerRepository);
             }
@@ -28,12 +28,8 @@ namespace CarRacing.Repositories
 
         public IRacer FindBy(string property)
         {
-            IRacer result = models.FirstOrDefault(x => x.Username== property);
-            if (result == null)
-            {
-                return null;
-            }
-            return result;
+           return models.FirstOrDefault(x => x.Username== property);
+           
         }
 
         public bool Remove(IRacer model)

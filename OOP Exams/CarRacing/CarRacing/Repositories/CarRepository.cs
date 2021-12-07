@@ -21,7 +21,7 @@ namespace CarRacing.Repositories
 
         public void Add(ICar model)
         {
-            if (model is null)
+            if (model == null)
             {
                 throw new ArgumentException(ExceptionMessages.InvalidAddCarRepository);
             }
@@ -30,12 +30,8 @@ namespace CarRacing.Repositories
 
         public ICar FindBy(string property)
         {
-            ICar result = models.FirstOrDefault(x=> x.VIN == property);
-            if (result == null)
-            {
-                return null;
-            }
-            return result;
+            return models.FirstOrDefault(x=> x.VIN == property);
+            
         }
 
         public bool Remove(ICar model)

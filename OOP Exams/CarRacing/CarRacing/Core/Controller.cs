@@ -27,33 +27,32 @@ namespace CarRacing.Core
         }
         public string AddCar(string type, string make, string model, string VIN, int horsePower)
         {
-            ICar currentCar = null;
+            ICar currentCar;
             if (type == "SuperCar")
             {
                 currentCar = new SuperCar(make,model,VIN,horsePower);
-                cars.Add(currentCar);
-                return $"Successfully added car {make} {model} ({VIN}).";
+               
             }
             else if (type == "TunedCar")
             {
                 currentCar = new TunedCar(make, model, VIN, horsePower);
-                cars.Add(currentCar);
-                return $"Successfully added car {make} {model} ({VIN}).";
+                
             }
             else
             {
-                return "Invalid car type!";
+                throw new ArgumentException("Invalid car type!");
             }
-
+            cars.Add(currentCar);
+            return $"Successfully added car {make} {model} ({VIN}).";
         }
 
         public string AddRacer(string type, string username, string carVIN)
         {
             IRacer currentRaces = null;
             ICar currentCar = cars.FindBy(carVIN);
-            if (currentCar is null)
+            if (currentCar == null)
             {
-                return "Car cannot be found!";
+                throw new ArgumentException("Car cannot be found!");
             }
             if (type == "ProfessionalRacer")
             {
@@ -69,7 +68,7 @@ namespace CarRacing.Core
             }
             else
             {
-                return "Invalid racer type!";
+                throw new ArgumentException("Invalid racer type!");
             }
         }
 
@@ -79,11 +78,11 @@ namespace CarRacing.Core
             IRacer racerTwo = racers.FindBy(racerTwoUsername);
             if (racerOne is null)
             {
-                return $"Racer {racerOneUsername} cannot be found!";
+                throw new ArgumentException($"Racer {racerOneUsername} cannot be found!");
             }
             if (racerTwo is null)
             {
-                return $"Racer {racerTwoUsername} cannot be found!";
+                throw new ArgumentException($"Racer {racerTwoUsername} cannot be found!");
             }
             return map.StartRace(racerOne, racerTwo);
         }

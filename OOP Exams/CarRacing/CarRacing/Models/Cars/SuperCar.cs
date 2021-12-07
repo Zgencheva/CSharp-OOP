@@ -11,13 +11,6 @@ namespace CarRacing.Models.Cars
         {
         }
 
-        public override void Drive()
-        {
-            this.FuelAvailable -= this.FuelConsumptionPerRace;
-            if (this.FuelAvailable < 0)
-            {
-                this.FuelAvailable = 0;
-            }
-        }
+       
     }
 }

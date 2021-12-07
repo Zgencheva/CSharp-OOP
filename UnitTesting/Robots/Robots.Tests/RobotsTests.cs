@@ -44,6 +44,11 @@ namespace Robots.Tests
                 ()=> this.robotManager = new RobotManager(capacity)/*, "Invalid capacity!"*/
                 );
         }
+        [Test]
+        public void TestIfRobotManagerCountIs0()
+        {
+            Assert.AreEqual(0, robotManager.Count);
+        }
 
         [Test]
         public void TestIfAddMethodWorks()
@@ -95,7 +100,7 @@ namespace Robots.Tests
         public void TestIfRemoveMethodRemovesTheRobot()
         {
             robotManager.Add(robot);
-            robotManager.Remove(robot.Name);
+            robotManager.Remove("robot1");
             Assert.That(robotManager.Count == 0);
         }
 
@@ -143,7 +148,7 @@ namespace Robots.Tests
         public void TestIfWorkMethodWorks()
         {
             robotManager.Add(robot);
-            robotManager.Work(robot.Name, "someJob", 1);
+            robotManager.Work("robot1", "someJob", 1);
             Assert.That(robot.Battery == 10);
                
         }
@@ -151,10 +156,10 @@ namespace Robots.Tests
         [Test]
         public void TestIChargekMethodThrowsExceptionIfNotFound()
         {
-            //robotManager.Add(robot);
+            robotManager.Add(robot);
 
             Assert.Throws<InvalidOperationException>(
-                () => robotManager.Charge(robot.Name)
+                () => robotManager.Charge("gfdgdf")
                 //,$"Robot with the name {robot.Name} doesn't exist!"
                 );
         }
@@ -163,8 +168,9 @@ namespace Robots.Tests
         public void TestIChargekMethodWorks()
         {
             robotManager.Add(robot);
-            robotManager.Charge(robot.Name);
-            Assert.That(robot.MaximumBattery == robot.Battery);
+            robotManager.Work("robot1", "some job", 1);
+            robotManager.Charge("robot1");
+            Assert.That(robot.Battery == 11);
                 
         }
     }

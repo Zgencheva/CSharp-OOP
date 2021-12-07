@@ -11,13 +11,14 @@ namespace CarRacing.Models.Cars
         private string model;
         private string vin;
         private int horsePower;
+        private double fuelAvailable;
         private double fuelConsumptionPerRace;
 
-        protected Car(string make, string model, string vIN, int horsePower, double fuelAvailable, double fuelConsumptionPerRace)
+        protected Car(string make, string model, string VIN, int horsePower, double fuelAvailable, double fuelConsumptionPerRace)
         {
             Make = make;
             Model = model;
-            VIN = vIN;
+            this.VIN = VIN;
             HorsePower = horsePower;
             FuelAvailable = fuelAvailable;
             FuelConsumptionPerRace = fuelConsumptionPerRace;
@@ -87,7 +88,22 @@ namespace CarRacing.Models.Cars
             }
         }
 
-        public double FuelAvailable { get; protected set; }
+        public double FuelAvailable {
+            get
+            {
+                return this.fuelAvailable;
+            }
+
+            protected set
+            {
+                if (value < 0)
+                {
+                    this.fuelAvailable = 0;
+                }
+                this.fuelAvailable = value;
+            }
+                
+                }
 
         public double FuelConsumptionPerRace
         {
@@ -105,7 +121,11 @@ namespace CarRacing.Models.Cars
             }
         }
 
-        public abstract void Drive();
+        public virtual void Drive()
+        {
+            FuelAvailable -= FuelConsumptionPerRace;
+            
+        }
        
         
     }

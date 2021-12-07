@@ -28,7 +28,7 @@ namespace SpaceStation.Models.Planets
             {
                 if (string.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentException(Utilities.Messages.ExceptionMessages.InvalidPlanetName);
+                    throw new ArgumentNullException(Utilities.Messages.ExceptionMessages.InvalidPlanetName);
                 }
                 this.name = value;
             }
